@@ -1,4 +1,4 @@
-package com.revature.caliber.data;
+package com.revature.hydra.address.data;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.caliber.beans.Address;
+import com.revature.beans.Address;
 
 /**
  *

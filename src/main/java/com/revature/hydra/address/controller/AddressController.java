@@ -1,4 +1,4 @@
-package com.revature.caliber.controller;
+package com.revature.hydra.address.controller;
 
 import java.util.List;
 
@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.caliber.model.Address;
-import com.revature.caliber.repository.AddressRepository;
+import com.revature.beans.Address;
+import com.revature.hydra.address.repository.AddressRepository;
 
 /**
  * Used for assessment CRUD operations. Includes both Trainer and QC assessments

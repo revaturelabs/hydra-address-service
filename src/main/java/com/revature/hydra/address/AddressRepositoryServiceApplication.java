@@ -17,12 +17,11 @@ public class AddressRepositoryServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AddressRepositoryServiceApplication.class, args);
 	}
+
 	@Bean
-    public Docket api() { 
-        return new Docket(DocumentationType.SWAGGER_2)  
-          .select()                                  
-          .apis(RequestHandlerSelectors.basePackage("com.revature.caliber.controller"))              
-          .paths(PathSelectors.any())                          
-          .build();
-    }
+	public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors.basePackage("com.revature.caliber.controller")).paths(PathSelectors.any())
+				.build();
+	}
 }

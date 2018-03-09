@@ -28,8 +28,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.revature.beans.Location;
 import com.revature.hydra.address.AddressRepositoryServiceApplication;
-import com.revature.hydra.address.beans.Location;
 import com.revature.hydra.address.service.ActivatableObjectDaoService;
 import com.revature.hydra.address.transfer.LocationDTO;
 import com.revature.hydra.address.util.JsonMaker;

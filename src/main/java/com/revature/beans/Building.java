@@ -1,4 +1,4 @@
-package com.revature.hydra.address.beans;
+package com.revature.beans;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

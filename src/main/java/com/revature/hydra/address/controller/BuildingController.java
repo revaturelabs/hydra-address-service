@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.hydra.address.beans.Building;
-import com.revature.hydra.address.beans.Room;
+import com.revature.beans.Building;
+import com.revature.beans.Room;
 import com.revature.hydra.address.service.ActivatableObjectDaoService;
 import com.revature.hydra.address.service.BuildingDaoService;
 import com.revature.hydra.address.transfer.BuildingDTO;
@@ -32,7 +32,7 @@ import io.swagger.annotations.ApiResponses;
 @RequestMapping("/api/v2/building")
 @ComponentScan(basePackages = "com.assignforce.locationmicroservice.service")
 @Api(value = "Building Controller", description = "CRUD Buildings")
-public class BuildingCtrl {
+public class BuildingController {
 
 	@Autowired
 	ActivatableObjectDaoService<Building, Integer> buildingService;

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.data.repository.NoRepositoryBean;
 
-import com.revature.hydra.address.beans.Activatable;
+import com.revature.beans.Activatable;
 
 /**
  * Created by August Duet on 11/29/2016.

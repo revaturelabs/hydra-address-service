@@ -27,8 +27,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.revature.beans.Room;
 import com.revature.hydra.address.AddressRepositoryServiceApplication;
-import com.revature.hydra.address.beans.Room;
 import com.revature.hydra.address.service.ActivatableObjectDaoService;
 import com.revature.hydra.address.util.JsonMaker;
 

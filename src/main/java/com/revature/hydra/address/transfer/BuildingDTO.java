@@ -2,7 +2,7 @@ package com.revature.hydra.address.transfer;
 
 import java.util.List;
 
-import com.revature.hydra.address.beans.Room;
+import com.revature.beans.Room;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

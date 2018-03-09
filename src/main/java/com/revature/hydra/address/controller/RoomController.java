@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.hydra.address.beans.Room;
+import com.revature.beans.Room;
 import com.revature.hydra.address.service.ActivatableObjectDaoService;
 import com.revature.hydra.address.transfer.ResponseErrorDTO;
 import com.revature.hydra.address.transfer.RoomDTO;
@@ -29,7 +29,7 @@ import io.swagger.annotations.ApiResponses;
 @RequestMapping("/api/v2/room")
 @ComponentScan(basePackages = "com.assignforce.locationmicroservice.service")
 @Api(value = "Room Controller", description = "Operations regarding rooms")
-public class RoomCtrl {
+public class RoomController {
 
 	@Autowired
 	ActivatableObjectDaoService<Room, Integer> roomService;

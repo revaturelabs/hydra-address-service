@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonObject;
 import com.revature.beans.Address;
-import com.revature.hydra.address.repository.AddressRepository;
+import com.revature.hydra.address.data.AddressRepository;
 
 @Service
 public class AddressRepositoryRequestDispatcher {

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Address;
-import com.revature.hydra.address.repository.AddressRepository;
+import com.revature.hydra.address.data.AddressRepository;
 
 /**
  * Used for assessment CRUD operations. Includes both Trainer and QC assessments

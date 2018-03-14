@@ -16,7 +16,7 @@ public class AddressRepositoryMessagingService {
 	@Autowired
 	private AddressRepositoryRequestDispatcher requestDispatcher;
 
-	@RabbitListener(queues = "revature.caliber.repos.address")
+	@RabbitListener(queues = "revature.hydra.repos.address")
 	public Address receiveSingleAddressRequest(String message) {
 		JsonParser parser = new JsonParser();
 		JsonElement element = parser.parse(message);
@@ -25,7 +25,7 @@ public class AddressRepositoryMessagingService {
 		return requestDispatcher.processSingleAddressRequest(request);
 	}
 
-	@RabbitListener(queues = "revature.caliber.repos.address.list")
+	@RabbitListener(queues = "revature.hydra.repos.address.list")
 	public List<Address> receiveListAddressRequest(String message) {
 		JsonParser parser = new JsonParser();
 		JsonElement element = parser.parse(message);

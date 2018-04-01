@@ -1,4 +1,4 @@
-package com.revature.beans;
+package com.revature.hydra.address.beans;
 
 /**
  * Created by August Duet on 11/29/2016.

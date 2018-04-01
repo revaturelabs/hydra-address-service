@@ -1,4 +1,4 @@
-package com.revature.beans;
+package com.revature.hydra.address.beans;
 
 import java.io.Serializable;
 

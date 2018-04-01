@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.revature.beans.Address;
+import com.revature.hydra.address.beans.Address;
 import com.revature.hydra.address.data.AddressDAO;
 
 @RunWith(SpringRunner.class)

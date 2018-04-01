@@ -8,15 +8,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.beans.Building;
-import com.revature.beans.Room;
+import com.revature.hydra.address.beans.Building;
+import com.revature.hydra.address.beans.Room;
 import com.revature.hydra.address.service.ActivatableObjectDaoService;
 import com.revature.hydra.address.service.BuildingDaoService;
 import com.revature.hydra.address.transfer.BuildingDTO;
@@ -29,8 +28,7 @@ import io.swagger.annotations.ApiResponses;
 
 //@CrossOrigin (origins = "*")
 @RestController
-@RequestMapping("/api/v2/building")
-@ComponentScan(basePackages = "com.assignforce.locationmicroservice.service")
+@RequestMapping("/building")
 @Api(value = "Building Controller", description = "CRUD Buildings")
 public class BuildingController {
 

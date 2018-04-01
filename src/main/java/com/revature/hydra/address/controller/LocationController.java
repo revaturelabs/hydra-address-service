@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.revature.beans.Building;
-import com.revature.beans.Location;
+import com.revature.hydra.address.beans.Building;
+import com.revature.hydra.address.beans.Location;
 import com.revature.hydra.address.service.ActivatableObjectDaoService;
 import com.revature.hydra.address.transfer.LocationDTO;
 import com.revature.hydra.address.transfer.ResponseErrorDTO;
@@ -28,8 +28,7 @@ import io.swagger.annotations.ApiResponses;
 
 //@CrossOrigin (origins = "*")
 @RestController
-@RequestMapping("/api/v2/location")
-@ComponentScan(basePackages = "com.assignforce.locationmicroservice.service")
+@RequestMapping("/location")
 @Api(value = "Location Controller", description = "Operations regarding Locations")
 public class LocationController {
 

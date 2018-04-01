@@ -26,8 +26,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.revature.beans.Building;
-import com.revature.beans.Room;
+import com.revature.hydra.address.beans.Building;
+import com.revature.hydra.address.beans.Room;
 import com.revature.hydra.address.AddressRepositoryServiceApplication;
 import com.revature.hydra.address.service.ActivatableObjectDaoService;
 import com.revature.hydra.address.transfer.BuildingDTO;
@@ -94,7 +94,7 @@ public class BuildingCtrlTest {
 	// @WithMockUser(roles = "Her Majesty The Queen Of England")
 	public void createBuildingTest() throws Exception {
 		given(buildingService.saveItem(any(Building.class))).willReturn(buildingTest);
-		mvc.perform(post("/api/v2/building")
+		mvc.perform(post("/building")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE).content(jsonMaker.toJsonString(buildingTest)))
 				.andExpect(status().isOk());
@@ -105,7 +105,7 @@ public class BuildingCtrlTest {
 	public void createBuildingWithEmptyDTOTest() throws Exception {
 		given(buildingService.saveItem(any(Building.class))).willReturn(null);
 		buildingTest = new Building();
-		mvc.perform(post("/api/v2/building")
+		mvc.perform(post("/building")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE).content(jsonMaker.toJsonString(buildingTest)))
 				.andExpect(status().isInternalServerError());
@@ -115,7 +115,7 @@ public class BuildingCtrlTest {
 	// @WithMockUser(roles = "Her Majesty The Queen Of England")
 	public void createBuildingWithNullDTOTest() throws Exception {
 		given(buildingService.saveItem(any(Building.class))).willReturn(null);
-		mvc.perform(post("/api/v2/building")
+		mvc.perform(post("/building")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isBadRequest());
 
@@ -125,7 +125,7 @@ public class BuildingCtrlTest {
 	// @WithMockUser(roles = "Her Majesty The Queen Of England")
 	public void retrieveBuildingTest() throws Exception {
 		given(buildingService.getOneItem(any(Integer.class))).willReturn(buildingTest);
-		mvc.perform(get("/api/v2/building/1")
+		mvc.perform(get("/building/1")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isOk())
 				.andExpect(jsonPath("$.name", is(buildingTest.getName())))
@@ -137,7 +137,7 @@ public class BuildingCtrlTest {
 	// @WithMockUser(roles = "Her Majesty The Queen Of England")
 	public void retrieveBuildingWithBadIdTest() throws Exception {
 		given(buildingService.getOneItem(any(Integer.class))).willReturn(null);
-		mvc.perform(get("/api/v2/building/1")
+		mvc.perform(get("/building/1")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isNotFound());
 	}
@@ -146,7 +146,7 @@ public class BuildingCtrlTest {
 	// @WithMockUser(roles = "Her Majesty The Queen Of England")
 	public void updateBuildingTest() throws Exception {
 		given(buildingService.saveItem(any(Building.class))).willReturn(buildingTest);
-		mvc.perform(put("/api/v2/building")
+		mvc.perform(put("/building")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE).content(jsonMaker.toJsonString(buildingTest)))
 				.andExpect(status().isOk());
@@ -157,7 +157,7 @@ public class BuildingCtrlTest {
 	public void updateBuildingWithEmptyDTOTest() throws Exception {
 		buildingTest = new Building();
 		given(buildingService.saveItem(any(Building.class))).willReturn(null);
-		mvc.perform(put("/api/v2/building")
+		mvc.perform(put("/building")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE).content(jsonMaker.toJsonString(buildingTest)))
 				.andExpect(status().isNotModified());
@@ -168,7 +168,7 @@ public class BuildingCtrlTest {
 	public void updateBuildingWithNullDTOTest() throws Exception {
 		buildingTest = new Building();
 		given(buildingService.saveItem(any(Building.class))).willReturn(null);
-		mvc.perform(put("/api/v2/building")
+		mvc.perform(put("/building")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE).content("")).andExpect(status().isBadRequest());
 
@@ -178,7 +178,7 @@ public class BuildingCtrlTest {
 	// @WithMockUser(roles = "Her Majesty The Queen Of England")
 	public void deleteBuildingTest() throws Exception {
 		doNothing().when(buildingService).deleteItem(any(Integer.class));
-		mvc.perform(delete("/api/v2/building/1"))
+		mvc.perform(delete("/building/1"))
 				// .with(csrf().asHeader()))
 				.andExpect(status().isOk());
 	}
@@ -189,7 +189,7 @@ public class BuildingCtrlTest {
 		List<Building> buildings = new ArrayList<>();
 		buildings.add(buildingTest);
 		given(buildingService.getAllItems()).willReturn(buildings);
-		mvc.perform(get("/api/v2/building"))
+		mvc.perform(get("/building"))
 				// .with(csrf().asHeader()))
 				.andExpect(status().isOk());
 	}
@@ -199,7 +199,7 @@ public class BuildingCtrlTest {
 	public void retrieveAllBuildingsReturnEmptyListTest() throws Exception {
 		List<Building> buildings = new ArrayList<>();
 		given(buildingService.getAllItems()).willReturn(buildings);
-		mvc.perform(get("/api/v2/building"))
+		mvc.perform(get("/building"))
 				// .with(csrf().asHeader()))
 				.andExpect(status().isNotFound());
 	}
@@ -208,7 +208,7 @@ public class BuildingCtrlTest {
 	// @WithMockUser(roles = "Her Majesty The Queen Of England")
 	public void retrieveAllBuildingsReturnNullTest() throws Exception {
 		given(buildingService.getAllItems()).willReturn(null);
-		mvc.perform(get("/api/v2/building"))
+		mvc.perform(get("/building"))
 				// .with(csrf().asHeader()))
 				.andExpect(status().isNotFound());
 

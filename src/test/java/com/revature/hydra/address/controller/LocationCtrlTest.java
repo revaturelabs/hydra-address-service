@@ -28,7 +28,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.revature.beans.Location;
+import com.revature.hydra.address.beans.Location;
 import com.revature.hydra.address.AddressRepositoryServiceApplication;
 import com.revature.hydra.address.service.ActivatableObjectDaoService;
 import com.revature.hydra.address.transfer.LocationDTO;
@@ -85,7 +85,7 @@ public class LocationCtrlTest {
 	// @WithMockUser
 	public void createLocationTest() throws Exception {
 		given(locationService.saveItem(any(Location.class))).willReturn(locationTest);
-		mvc.perform(post("/api/v2/location").contentType(MediaType.APPLICATION_JSON_VALUE)
+		mvc.perform(post("/location").contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(jsonMaker.toJsonString(locationTest)))
 				// .with(csrf().asHeader())
 				.andExpect(status().isOk());
@@ -95,7 +95,7 @@ public class LocationCtrlTest {
 	// @WithMockUser
 	public void createLocationWithEmptyDTOTest() throws Exception {
 		given(locationService.saveItem(any(Location.class))).willReturn(null);
-		mvc.perform(post("/api/v2/location")
+		mvc.perform(post("/location")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE).content(jsonMaker.toJsonString(locationTest)))
 				.andExpect(status().isInternalServerError());
@@ -105,7 +105,7 @@ public class LocationCtrlTest {
 	// @WithMockUser
 	public void createLocationReturnNullTest() throws Exception {
 		given(locationService.saveItem(any(Location.class))).willReturn(null);
-		mvc.perform(post("/api/v2/location")
+		mvc.perform(post("/location")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isBadRequest());
 	}
@@ -114,7 +114,7 @@ public class LocationCtrlTest {
 	// @WithMockUser
 	public void retrieveLocationTest() throws Exception {
 		given(locationService.getOneItem(any(Integer.class))).willReturn(locationTest);
-		mvc.perform(get("/api/v2/location/1")
+		mvc.perform(get("/location/1")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isOk())
 				.andExpect(jsonPath("$.name", is(locationTest.getName())))
@@ -131,7 +131,7 @@ public class LocationCtrlTest {
 				.build();
 
 		given(locationService.getOneItem(any(Integer.class))).willReturn(null);
-		mvc.perform(get("/api/v2/location/1")
+		mvc.perform(get("/location/1")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isNotFound());
 
@@ -141,7 +141,7 @@ public class LocationCtrlTest {
 	// @WithMockUser()
 	public void updateLocationTest() throws Exception {
 		given(locationService.saveItem(any(Location.class))).willReturn(locationTest);
-		mvc.perform(put("/api/v2/location")
+		mvc.perform(put("/location")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE).content(jsonMaker.toJsonString(locationTest)))
 				.andExpect(status().isOk());
@@ -152,7 +152,7 @@ public class LocationCtrlTest {
 	public void updateLocationWithEmptyDTOTest() throws Exception {
 		locationTest = new Location();
 		given(locationService.saveItem(any(Location.class))).willReturn(null);
-		mvc.perform(put("/api/v2/location")
+		mvc.perform(put("/location")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE).content(jsonMaker.toJsonString(locationTest)))
 				.andExpect(status().isNotModified());
@@ -163,7 +163,7 @@ public class LocationCtrlTest {
 	public void updateLocationReturnNullTest() throws Exception {
 		locationTest = new Location();
 		given(locationService.saveItem(any(Location.class))).willReturn(null);
-		mvc.perform(put("/api/v2/location")
+		mvc.perform(put("/location")
 				// .with(csrf().asHeader())
 				.contentType(MediaType.APPLICATION_JSON_VALUE).content("")).andExpect(status().isBadRequest());
 	}
@@ -172,7 +172,7 @@ public class LocationCtrlTest {
 	// @WithMockUser
 	public void deleteLocationTest() throws Exception {
 		doNothing().when(locationService).deleteItem(any(Integer.class));
-		mvc.perform(delete("/api/v2/location/1"))
+		mvc.perform(delete("/location/1"))
 				// .with(csrf().asHeader())
 				.andExpect(status().isOk());
 	}
@@ -183,7 +183,7 @@ public class LocationCtrlTest {
 		List<Location> locations = new ArrayList<>();
 		locations.add(locationTest);
 		given(locationService.getAllItems()).willReturn(locations);
-		mvc.perform(get("/api/v2/location"))
+		mvc.perform(get("/location"))
 				// .with(csrf().asHeader()))
 				.andExpect(status().isOk());
 	}
@@ -193,7 +193,7 @@ public class LocationCtrlTest {
 	public void retrieveAllLocationsWithEmptyListTest() throws Exception {
 		List<Location> locations = new ArrayList<>();
 		given(locationService.getAllItems()).willReturn(locations);
-		mvc.perform(get("/api/v2/location"))
+		mvc.perform(get("/location"))
 				// .with(csrf().asHeader()))
 				.andExpect(status().isNotFound());
 	}
@@ -202,7 +202,7 @@ public class LocationCtrlTest {
 	// @WithMockUser
 	public void retrieveAllLocationsReturnNullTest() throws Exception {
 		given(locationService.getAllItems()).willReturn(null);
-		mvc.perform(get("/api/v2/location"))
+		mvc.perform(get("/location"))
 				// .with(csrf().asHeader()))
 				.andExpect(status().isNotFound());
 	}

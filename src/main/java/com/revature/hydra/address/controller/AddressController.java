@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.beans.Address;
+import com.revature.hydra.address.beans.Address;
 import com.revature.hydra.address.data.AddressRepository;
 
 /**
@@ -30,7 +29,7 @@ import com.revature.hydra.address.data.AddressRepository;
  * @author Jack McCabe
  */
 @RestController
-@PreAuthorize("isAuthenticated()")
+// @PreAuthorize("isAuthenticated()")
 @CrossOrigin(origins = "*")
 public class AddressController {
 	private static final Logger log = Logger.getLogger(AddressController.class);
@@ -46,7 +45,7 @@ public class AddressController {
 	 */
 	@RequestMapping(value = "/vp/location/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	@PreAuthorize("hasAnyRole('VP')")
+	// @PreAuthorize("hasAnyRole('VP')")
 	public ResponseEntity<Address> createLocation(@Valid @RequestBody Address location) {
 		log.info("Saving location: " + location);
 		aRepo.save(location);
@@ -62,7 +61,7 @@ public class AddressController {
 	 */
 	@RequestMapping(value = "/vp/location/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	@PreAuthorize("hasAnyRole('VP')")
+	// @PreAuthorize("hasAnyRole('VP')")
 	public ResponseEntity<Void> updateLocation(@Valid @RequestBody Address location) {
 		log.info("Updating location: " + location);
 		aRepo.save(location);
@@ -76,7 +75,7 @@ public class AddressController {
 	 */
 	@RequestMapping(value = "/all/location/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	@PreAuthorize("hasAnyRole('VP', 'QC', 'TRAINER', 'STAGING', 'PANEL')")
+	// @PreAuthorize("hasAnyRole('VP', 'QC', 'TRAINER', 'STAGING', 'PANEL')")
 	public ResponseEntity<List<Address>> getAllLocations() {
 		log.info("Fetching all locations");
 		List<Address> locations = aRepo.findAll();
@@ -91,7 +90,7 @@ public class AddressController {
 	 */
 	@RequestMapping(value = "/vp/location/delete", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	@PreAuthorize("hasAnyRole('VP')")
+	// @PreAuthorize("hasAnyRole('VP')")
 	public ResponseEntity<Void> removeLocation(@Valid @RequestBody Address location) {
 		log.info("Deactivating location: " + location);
 		aRepo.save(location);
@@ -106,7 +105,7 @@ public class AddressController {
 	 */
 	@RequestMapping(value = "/vp/location/reactivate", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	@PreAuthorize("hasAnyRole('VP')")
+	// @PreAuthorize("hasAnyRole('VP')")
 	public ResponseEntity<Void> reactivateLocation(@Valid @RequestBody Address location) {
 		log.info("Updating location: " + location);
 		aRepo.save(location);

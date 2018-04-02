@@ -4,9 +4,6 @@ spring:
   cloud:
     services:
       registrationMethod: direct
-  jpa:
-    hibernate:
-      ddl-auto: create
 
 eureka:
   client:

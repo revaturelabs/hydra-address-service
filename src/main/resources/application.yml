@@ -1,22 +1,7 @@
 spring:
   profiles:
-    active: addressService
+    active: address
 
----
-
-spring:
-  profiles: test
-  datasource:
-    platform: h2
-    url: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
-
-eureka:
-  client:
-    enabled: false
 ---
 
 spring:
@@ -25,11 +10,7 @@ spring:
   cloud:
     services:
       registrationMethod: direct
-  profiles: addressService
-  jpa:
-    hibernate:
-      ddl-auto: create
-
+  profiles: address
 eureka:
   client:
     register-with-eureka: true
@@ -48,3 +29,13 @@ server:
   servlet:
     contextPath: /v0
 
+---
+
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:h2:mem:test
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect

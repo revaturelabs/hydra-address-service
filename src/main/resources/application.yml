@@ -11,6 +11,10 @@ spring:
     services:
       registrationMethod: direct
   profiles: address
+  jpa:
+    hibernate:
+      ddl-auto: update
+
 eureka:
   client:
     register-with-eureka: true

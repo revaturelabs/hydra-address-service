@@ -1,5 +1,5 @@
 ---
 applications:
 - name: address
-  path: ./target/address-0.0.1.jar
+  path: ./target/hydra-address-0.0.1.jar
   no-route: true

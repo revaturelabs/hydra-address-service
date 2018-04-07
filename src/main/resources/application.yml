@@ -1,16 +1,16 @@
 spring:
   profiles:
-    active: address
+    active: production
 
 ---
 
 spring:
+  profiles: production
   application:
     name: address
   cloud:
     services:
       registrationMethod: direct
-  profiles: address
   jpa:
     hibernate:
       ddl-auto: update
